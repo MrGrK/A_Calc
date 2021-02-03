@@ -24,11 +24,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Group xGpNums = findViewById(R.id.gp_nums);
-        Group xGpActions = findViewById(R.id.gp_actions);
+
         _fTV =  findViewById(R.id.tv_Task);
 
-        xGpActions.setOnClickListener(new View.OnClickListener() {
+        Button button1 = findViewById(R.id.button_1);
+
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {String xValue = ((Button) v).getText().toString();
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        xGpNums.setOnClickListener(new View.OnClickListener() {
+        /*xGpNums.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
              try {
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                  _fTV.setText(e.getMessage());
              }
             }
-        });
+        });*/
     }
 
     private void initCalc()throws Exception{

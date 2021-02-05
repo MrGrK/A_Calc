@@ -7,17 +7,38 @@
     android:layout_height="match_parent"
     android:background="@drawable/scottish"
     tools:context=".MainActivity">
-
     <TextView
-        android:id="@+id/tv_Task"
+        android:id="@+id/tv_first_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:background="@color/cardview_dark_background"
+        android:background="@color/views_colors"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_second_num"
+        style="@style/Text"/>
+    <TextView
+        android:id="@+id/tv_second_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/views_colors"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_first_num"
+        app:layout_constraintBottom_toTopOf="@+id/tv_res_num"
+        style="@style/Text"/>
+    <TextView
+        android:id="@+id/tv_res_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/views_colors"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_second_num"
+        app:layout_constraintBottom_toTopOf="@+id/button_2"
+        style="@style/Text"/>
     <Button
         android:id="@+id/button_1"
         android:layout_width="wrap_content"
@@ -210,6 +231,17 @@
         app:layout_constraintTop_toBottomOf="@id/button_multiply"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/string_clear"
+        app:layout_constraintEnd_toEndOf="@id/button_divide"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/button_point"
+        app:layout_constraintTop_toBottomOf="@id/button_0"
+        app:layout_constraintVertical_chainStyle="packed" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

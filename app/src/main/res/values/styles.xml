@@ -40,7 +40,7 @@
     <style name="ActionButtons">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="backgroundTint">@color/Olive</item>
+        <item name="backgroundTint">@color/red</item>
         <item name="layout_constraintHorizontal_bias">0.17</item>
         <item name="layout_constraintVertical_chainStyle">packed</item>
         <item name="layout_constraintHorizontal_chainStyle">packed</item>
@@ -49,7 +49,7 @@
     <style name="ActionButtonsM">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="backgroundTint">@color/Olive</item>
+        <item name="backgroundTint">@color/red</item>
         <item name="layout_constraintVertical_bias">1.0</item>
         <item name="layout_constraintHorizontal_bias">0.0</item>
         <item name="layout_constraintVertical_chainStyle">packed</item>

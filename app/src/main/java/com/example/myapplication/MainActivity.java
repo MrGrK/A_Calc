@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView fTvFirst = null;
     private TextView fTvSecond = null;
     private TextView fTvRes = null;
-    private HashMap<String,Button> fButtonMap = new HashMap<String,Button>();
+    private HashMap<String, Button> fButtonMap = new HashMap<String, Button>();
 
 
     @Override
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fButtonMap.put("buttonDivide", findViewById(R.id.button_divide));
         fButtonMap.put("buttonClear", findViewById(R.id.button_clear));
 
-        for (Button button: fButtonMap.values()) {
+        for (Button button : fButtonMap.values()) {
             button.setOnClickListener(this);
         }
     }
@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.button_0:
                 setNums("0");
                 break;
@@ -122,30 +121,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void initTask(Calculator.eTasks pTask)  {
-        if(fCalc==(null))
+    private void initTask(Calculator.eTasks pTask) {
+        if (fCalc == (null))
             fCalc = new Calculator();
-        if(fCalc.getfStrFirstNum()==null)
+        if (fCalc.getfStrFirstNum() == null)
             return;
         fCalc.setTask(pTask);
     }
 
     private void DoTask() {
-        if(fCalc.equals(null))
+        if (fCalc.equals(null))
             return;
         try {
             String xRes = fCalc.DoTask().toString();
-            fTvRes.setText(xRes );
+            fTvRes.setText(xRes);
         } catch (Exception e) {
 
-            Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(),  Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
             toast.show();
         }
     }
 
     private void setNums(String pValue) {
         try {
-            if(fCalc.getTask()==null) {
+            if (fCalc.getTask() == null) {
                 if (fCalc.getfStrFirstNum() == (null)) {
                     if (pValue.equals("."))
                         return;
@@ -160,32 +159,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 fTvFirst.setText(fCalc.getfStrFirstNum().toString());
-            }
-            else {
-                if(fCalc.getfStrSecondNum()==(null))
-                {
-                    if(pValue.equals("."))
+            } else {
+                if (fCalc.getfStrSecondNum() == (null)) {
+                    if (pValue.equals("."))
                         return;
                     fCalc.setfStrSecondNum(new StringBuilder().append(pValue));
-                }
-                else {
-                    if(pValue.equals(".")){
-                        if(fCalc.getfStrSecondNum().indexOf(".")== -1 && fCalc.getfStrSecondNum().length()>0)
-                        {
+                } else {
+                    if (pValue.equals(".")) {
+                        if (fCalc.getfStrSecondNum().indexOf(".") == -1 && fCalc.getfStrSecondNum().length() > 0) {
                             fCalc.appendfStrSecondNum(pValue);
                         }
-                    }
-                    else{
+                    } else {
                         fCalc.appendfStrSecondNum(pValue);
                     }
                 }
                 fTvSecond.setText(fCalc.getfStrSecondNum().toString());
             }
 
-        }
-        catch (Exception e)
-        {
-            Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(),  Toast.LENGTH_SHORT);
+        } catch (Exception e) {
+            Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
             toast.show();
         }
     }
@@ -201,17 +193,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onRestoreInstanceState(instanceState);
         fCalc = (Calculator) instanceState.getSerializable(keyCalculator);
-        if(fCalc==null)
+        if (fCalc == null)
             return;
         setTextCounters();
     }
 
     private void setTextCounters() {
-        if(fCalc==null)
+        if (fCalc == null)
             return;
-        if(fCalc.getfStrFirstNum()!=null)
+        if (fCalc.getfStrFirstNum() != null)
             fTvFirst.setText(fCalc.getfStrFirstNum().toString());
-        if(fCalc.getfStrSecondNum()!=null)
+        if (fCalc.getfStrSecondNum() != null)
             fTvSecond.setText(fCalc.getfStrSecondNum().toString());
 
     }

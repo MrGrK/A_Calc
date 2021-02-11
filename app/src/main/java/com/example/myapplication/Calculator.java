@@ -11,7 +11,9 @@ public class Calculator implements Serializable {
     private StringBuilder fStrFirstNum;
     private StringBuilder fStrSecondNum;
 
-    static enum  eTasks{plus, minus, multiply, divide };
+    static enum eTasks {plus, minus, multiply, divide}
+
+    ;
 
     private eTasks fTask = null;
 
@@ -24,66 +26,49 @@ public class Calculator implements Serializable {
     }
 
 
-
-    public Calculator(){
+    public Calculator() {
 
     }
 
 
-    private Float plus()throws Exception{
+    private Float plus() throws Exception {
         try {
-            return(fFirstNum + fSecondNum);
-        }
-        catch (Exception e)
-        {
+            return (fFirstNum + fSecondNum);
+        } catch (Exception e) {
             throw e;
-        }
-        catch (ExceptionInInitializerError e)
-        {
+        } catch (ExceptionInInitializerError e) {
             throw e;
         }
     }
 
-    private Float minus()throws Exception{
+    private Float minus() throws Exception {
         try {
             return fFirstNum - fSecondNum;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw e;
-        }
-        catch (ExceptionInInitializerError e)
-        {
+        } catch (ExceptionInInitializerError e) {
             throw e;
         }
     }
 
 
-    private Float multiply()throws Exception{
+    private Float multiply() throws Exception {
         try {
             return fFirstNum * fSecondNum;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw e;
-        }
-        catch (ExceptionInInitializerError e)
-        {
+        } catch (ExceptionInInitializerError e) {
             throw e;
         }
     }
 
 
-    private Float divide()throws Exception{
+    private Float divide() throws Exception {
         try {
             return fFirstNum / fSecondNum;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw e;
-        }
-        catch (ExceptionInInitializerError e)
-        {
+        } catch (ExceptionInInitializerError e) {
             throw e;
         }
     }
@@ -98,7 +83,7 @@ public class Calculator implements Serializable {
     }
 
     public void appendfStrFirstNum(String fStrirstNum) {
-        this.fStrFirstNum.append( fStrirstNum);
+        this.fStrFirstNum.append(fStrirstNum);
     }
 
     public StringBuilder getfStrSecondNum() {
@@ -113,35 +98,32 @@ public class Calculator implements Serializable {
         this.fStrSecondNum.append(fStrSecondNum);
     }
 
-    public Float DoTask() throws Exception{
+    public Float DoTask() throws Exception {
         Float xRes = null;
-        if(fTask.equals(null)||fStrFirstNum.equals(null)||fStrSecondNum.equals(null))
-           throw new Exception("Не введены данные, либо не выбрана операция.");
+        if (fTask.equals(null) || fStrFirstNum.equals(null) || fStrSecondNum.equals(null))
+            throw new Exception("Не введены данные, либо не выбрана операция.");
         try {
-            if(fStrFirstNum.indexOf(".")!=-1)
-            {
+            if (fStrFirstNum.indexOf(".") != -1) {
 
             }
             fFirstNum = Float.parseFloat(fStrFirstNum.toString());
             fSecondNum = Float.parseFloat(fStrSecondNum.toString());
-            switch (fTask){
+            switch (fTask) {
                 case plus:
                     xRes = plus();
                     break;
                 case minus:
-                    xRes =minus();
+                    xRes = minus();
                     break;
                 case multiply:
-                    xRes =multiply();
+                    xRes = multiply();
                     break;
                 case divide:
                     xRes = divide();
                     break;
             }
             return xRes;
-        }
-
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw e;
         } catch (Exception e) {
             throw e;

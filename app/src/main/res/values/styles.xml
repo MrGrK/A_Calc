@@ -1,10 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:background">@color/views_colors</item>
+        <item name="layout_constraintHorizontal_chainStyle">packed</item>
         <item name="android:textSize">20dp</item>
         <item name="fontFamily">sans-serif</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="ButtonNumStyle">
+        <item name="android:background">#70000000</item>
+        <item name="backgroundTint">@color/black</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintHorizontal_bias">0.17</item>
+        <item name="layout_constraintVertical_bias">0.3</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
+        <item name="layout_constraintHorizontal_chainStyle">packed</item>
+    </style>
+
+    <style name="ButtonNumStyleM">
+        <item name="android:background">#70000000</item>
+        <item name="backgroundTint">@color/black</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintHorizontal_bias">0.17</item>
+        <item name="layout_constraintVertical_bias">0.3</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
+        <item name="layout_constraintHorizontal_chainStyle">packed</item>
+    </style>
+
+    <style name="ActionButtons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="backgroundTint">@color/Olive</item>
+        <item name="layout_constraintHorizontal_bias">0.17</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
+        <item name="layout_constraintHorizontal_chainStyle">packed</item>
+    </style>
+
+    <style name="ActionButtonsM">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="backgroundTint">@color/Olive</item>
+        <item name="layout_constraintVertical_bias">1.0</item>
+        <item name="layout_constraintHorizontal_bias">0.0</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
+        <item name="layout_constraintHorizontal_chainStyle">packed</item>
+        <item name="android:layout_marginStart">5dp</item>
     </style>
 </resources>

@@ -171,7 +171,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_clear"
-        android:backgroundTint="@color/Olive"
+        android:backgroundTint="@color/red"
         android:layout_width="366dp"
         android:layout_height="39dp"
         android:layout_marginStart="5dp"

@@ -1,11 +1,16 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
 
+import android.app.Activity;
 import android.app.VoiceInteractor;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,13 +21,17 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    public final static String BACKGROUND_PIC= "BACKGROUND_PIC";
+    public final static int RC_BGSTATE= 1;
+    private ConstraintLayout fLayout;
     private Calculator fCalc;
     private final static String keyCalculator = "Calculator";
     private TextView fTvFirst = null;
     private TextView fTvSecond = null;
     private TextView fTvRes = null;
+    private String fBackgroundName;
     private HashMap<String, Button> fButtonMap = new HashMap<String, Button>();
+    private  Button fSettingsBt;
 
 
     @Override
@@ -34,9 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void InitView() {
+        fLayout = findViewById(R.id.layout);
+        setLayoutBackgroundIMG("CAT");
         fTvFirst = findViewById(R.id.tv_first_num);
         fTvSecond = findViewById(R.id.tv_second_num);
         fTvRes = findViewById(R.id.tv_res_num);
+        fSettingsBt = findViewById(R.id.button_settings);
+
         fButtonMap.put("0", findViewById(R.id.button_0));
         fButtonMap.put("1", findViewById(R.id.button_1));
         fButtonMap.put("2", findViewById(R.id.button_2));
@@ -58,6 +71,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (Button button : fButtonMap.values()) {
             button.setOnClickListener(this);
         }
+
+        fSettingsBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSettings();
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==RC_BGSTATE && resultCode== Activity.RESULT_OK)
+        {
+            if(data!=null)
+            {
+                  fBackgroundName = (String) data.getStringExtra("answ");
+                  setLayoutBackgroundIMG(fBackgroundName);
+            }
+        }
+    }
+
+    private void openSettings() {
+        Intent xIntent = new Intent(this, SettingsActivity.class);
+        xIntent.putExtra(BACKGROUND_PIC, fBackgroundName);
+        startActivityForResult(xIntent, RC_BGSTATE);
+    }
+
+    private void setLayoutBackgroundIMG(String pImgName) {
+        fBackgroundName = pImgName;
+        if(pImgName.equals("CAT"))
+            fLayout.setBackgroundResource(R.drawable.scottish);
+        else if(pImgName.equals("DOG"))
+            fLayout.setBackgroundResource(R.drawable.dog);
+
     }
 
 
@@ -65,37 +113,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_0:
-                setNums("0");
+                setButtonData("0");
                 break;
             case R.id.button_1:
-                setNums("1");
+                setButtonData("1");
                 break;
             case R.id.button_2:
-                setNums("2");
+                setButtonData("2");
                 break;
             case R.id.button_3:
-                setNums("3");
+                setButtonData("3");
                 break;
             case R.id.button_4:
-                setNums("4");
+                setButtonData("4");
                 break;
             case R.id.button_5:
-                setNums("5");
+                setButtonData("5");
                 break;
             case R.id.button_6:
-                setNums("6");
+                setButtonData("6");
                 break;
             case R.id.button_7:
-                setNums("7");
+                setButtonData("7");
                 break;
             case R.id.button_8:
-                setNums("8");
+                setButtonData("8");
                 break;
             case R.id.button_9:
-                setNums("9");
+                setButtonData("9");
                 break;
             case R.id.button_point:
-                setNums(".");
+                setButtonData(".");
                 break;
             case R.id.button_equals:
                 DoTask();
@@ -142,42 +190,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setNums(String pValue) {
+    private void setButtonData(String pValue) {
         try {
-            if (fCalc.getTask() == null) {
-                if (fCalc.getfStrFirstNum() == (null)) {
-                    if (pValue.equals("."))
-                        return;
-                    fCalc.setfStrFirstNum(new StringBuilder().append(pValue));
-                } else {
-                    if (pValue.equals(".")) {
-                        if (fCalc.getfStrFirstNum().indexOf(".") == -1 && fCalc.getfStrFirstNum().length() > 0) {
-                            fCalc.appendfStrFirstNum(pValue);
-                        }
-                    } else {
-                        fCalc.appendfStrFirstNum(pValue);
-                    }
-                }
+            fCalc.SetNums(pValue);
+            if(fCalc.getfStrFirstNum()!=null)
                 fTvFirst.setText(fCalc.getfStrFirstNum().toString());
-            } else {
-                if (fCalc.getfStrSecondNum() == (null)) {
-                    if (pValue.equals("."))
-                        return;
-                    fCalc.setfStrSecondNum(new StringBuilder().append(pValue));
-                } else {
-                    if (pValue.equals(".")) {
-                        if (fCalc.getfStrSecondNum().indexOf(".") == -1 && fCalc.getfStrSecondNum().length() > 0) {
-                            fCalc.appendfStrSecondNum(pValue);
-                        }
-                    } else {
-                        fCalc.appendfStrSecondNum(pValue);
-                    }
-                }
+            if(fCalc.getfStrSecondNum()!=null)
                 fTvSecond.setText(fCalc.getfStrSecondNum().toString());
-            }
-
-        } catch (Exception e) {
-            Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
+        }catch (Exception e)
+        {
+            Toast toast = Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT);
             toast.show();
         }
     }

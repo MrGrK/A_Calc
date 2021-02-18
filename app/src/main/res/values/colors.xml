@@ -11,4 +11,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_numbers">#50000000</color>
     <color name="views_colors">#80000000</color>
+    <color name="gray">#808080</color>
 </resources>

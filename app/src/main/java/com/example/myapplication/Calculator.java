@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.widget.Toast;
 
 import java.io.Serializable;
 
@@ -10,6 +11,46 @@ public class Calculator implements Serializable {
     private Float fSecondNum;
     private StringBuilder fStrFirstNum;
     private StringBuilder fStrSecondNum;
+
+    public void SetNums(String pValue)throws Exception {
+        try {
+            if (this.getTask() == null) {
+                if (this.getfStrFirstNum() == (null)) {
+                    if (pValue.equals("."))
+                        return;
+                    this.setfStrFirstNum(new StringBuilder().append(pValue));
+                } else {
+                    if (pValue.equals(".")) {
+                        if (this.getfStrFirstNum().indexOf(".") == -1 && this.getfStrFirstNum().length() > 0) {
+                            this.appendfStrFirstNum(pValue);
+                        }
+                    } else {
+                        this.appendfStrFirstNum(pValue);
+                    }
+                }
+
+            } else {
+                if (this.getfStrSecondNum() == (null)) {
+                    if (pValue.equals("."))
+                        return;
+                    this.setfStrSecondNum(new StringBuilder().append(pValue));
+                } else {
+                    if (pValue.equals(".")) {
+                        if (this.getfStrSecondNum().indexOf(".") == -1 && this.getfStrSecondNum().length() > 0) {
+                            this.appendfStrSecondNum(pValue);
+                        }
+                    } else {
+                        this.appendfStrSecondNum(pValue);
+                    }
+                }
+
+            }
+
+        } catch (Exception e)
+        {
+            throw e;
+        }
+    }
 
     static enum eTasks {plus, minus, multiply, divide}
 

@@ -16,5 +16,11 @@
     <string name="string_divide">:</string>
     <string name="string_equals">=</string>
     <string name="app_name">Calculator</string>
-    <string name="string_clear">CLEAR</string>
+    <string name="string_clear">Очистить</string>
+    <string name="style1">Стиль 1</string>
+    <string name="style2">Стиль 2</string>
+    <string name="BackGround">Фон</string>
+    <string name="btSettings">Настройки</string>
+    <string name="dog">Пёс</string>
+    <string name="cat">Кот</string>
 </resources>

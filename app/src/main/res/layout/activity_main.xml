@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/scottish"
@@ -171,15 +172,27 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_clear"
-        android:backgroundTint="@color/Olive"
         android:layout_width="366dp"
         android:layout_height="39dp"
         android:layout_marginStart="5dp"
+        android:backgroundTint="@color/purple_500"
         android:text="@string/string_clear"
         app:layout_constraintEnd_toEndOf="@id/button_divide"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/button_point"
         app:layout_constraintTop_toBottomOf="@id/button_0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_settings"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="@string/btSettings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
 
